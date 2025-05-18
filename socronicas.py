@@ -73,7 +73,7 @@ st.markdown("""
 # ========== LOGO ==========
 try:
     logo = Image.open("logosocronicas.png")
-    st.image(logo, use_column_width=False, width=300)
+    st.image(logo, use_container_width=False, width=300)
 except:
     st.markdown("<h1>Só Crônicas</h1>", unsafe_allow_html=True)
 
@@ -91,8 +91,10 @@ else:
 CRONICAS_DIR = "cronicas"
 VIDEOS_DIR = "videos"
 
-# ========== FUNÇÃO ==========
+# ========== FUNÇÃO PARA LISTAR CRÔNICAS ==========
 def listar_cronicas():
+    if not os.path.exists(CRONICAS_DIR):
+        return []
     return sorted([f for f in os.listdir(CRONICAS_DIR) if f.endswith(".txt")])
 
 # ========== EXIBIR CRÔNICAS ==========
